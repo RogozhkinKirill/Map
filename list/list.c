@@ -21,31 +21,29 @@ pList CreateList()
 
 void  DeleteList(pList *lst)
 {
-	if(lst)
+    debug_creator_print("0x%p: Delete List\n" , *lst);
+    if(lst)
     {
         if (*lst)
         {
             if ((*lst)->head)
             {
-                pListIterator lst_itr = CreateListIterator(*lst);
-
-                do
+                pList_el lst_el = (*lst)->head;
+                pList_el next = lst_el;
+                while (lst_el)
                 {
-                    void* tmp = GetListIterator(&lst_itr);
-                    free(&tmp);
-                    ListIteratorNext(&lst_itr);
-
-                } while (lst_itr);
+                    next = lst_el->next;
+                    DeleteList_el(&lst_el);
+                    lst_el = next;
+                }
             }
-
             free(*lst);
         }
-	}
+    }
 
-    if (lst)
+    if (lst) {
         *lst = NULL;
-
-    debug_creator_print("0x%p: Delete List\n" , *lst);
+    }
 }
 
 
@@ -66,13 +64,15 @@ pList_el CreateList_el(void *value)
 
 void     DeleteList_el(pList_el *lst_el)
 {
-    if (lst_el && *lst_el)
-	    free(*lst_el);
+    debug_creator_print("0x%p: Delete List_el\n" , *lst_el);
+    if (lst_el && *lst_el) {
+        free(*lst_el);
+    }
 
-    if (lst_el)
-	    *lst_el = NULL;
+    if (lst_el) {
+        *lst_el = NULL;
+    }
 
-    debug_creator_print("0x%p: Delete List\n" , *lst_el);
 }
 
 

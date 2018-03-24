@@ -13,24 +13,27 @@ pMap CreateMap()
 
 void DeleteMap(pMap* map)
 {
-	if (map && (*map) && (*map)->data)
+    debug_print("0x%p: Delete Map\n" , *map);
+    if (map && (*map) && (*map)->data)
 	{
-		pMap_el tmp = 0;
-		pListIterator lst_itr = CreateListIterator((*map)->data);
-		while (lst_itr)
+        pMap_el tmp = 0;
+        pListIterator lst_itr = CreateListIterator((*map)->data);
+        while (lst_itr)
 		{
             tmp = (pMap_el)GetListIterator(&lst_itr);
             ListIteratorNext(&lst_itr);
             free(tmp);
-		}
-		
-		free(*map);
-	}
+        }
 
-    if (map)
+        pList lst = (*map)->data;
+        DeleteList(&lst);
+
+        free(*map);
+    }
+
+    if (map) {
         *map = NULL;
-
-    debug_print("0x%p: Delete Map\n" , map);
+    }
 }
 
 

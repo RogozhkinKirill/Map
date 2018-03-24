@@ -10,6 +10,7 @@ int main()
 
     AddToMap(map , 1 , 1);
     AddToMap(map , 2 , 2);
+    AddToMap(map , 3 , 3);
 
 
     pMap_el map_el = (pMap_el)(map->data->tail->value);
@@ -19,8 +20,6 @@ int main()
     printf ("IsInMap %d\n" , IsInMap(map , 2));
 
     DeleteMap(&map);
-
-
 
 	return 0;
 }
