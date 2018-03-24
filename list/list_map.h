@@ -1,8 +1,8 @@
 #ifndef __LIST_MAP_H__
 #define __LIST_MAP_H__
 
-typedef int   MapKeyType;
-typedef char* MapValueType;
+typedef int MapKeyType;
+typedef int MapValueType;
 
 
 #include <stdlib.h>

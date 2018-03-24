@@ -18,4 +18,4 @@ add_executable(Map main.c
                     list/list_map.h
                 )
 
-add_definitions(-DDEBUG)
+add_definitions(-DDEBUG -DDEBUG_CREATOR)

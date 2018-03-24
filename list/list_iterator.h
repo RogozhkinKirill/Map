@@ -13,8 +13,8 @@ typedef struct ListIterator
 //ListIterator Functions
 
 //Creator and destructor
-pListIterator CreateListIterator (pList  lst);
-void          DestroyListIterator(pListIterator* lst_itr);
+pListIterator CreateListIterator(pList  lst);
+void          DeleteListIterator(pListIterator *lst_itr);
 
 //Main Functions
 void  ListIteratorNext(pListIterator* lst_itr);

@@ -4,16 +4,23 @@
 
 
 int main()
-{	
-	pMap map = CreateMap();
-	debug_print("0x%p: Create Map \n" , map);
+{
+    //Test on correct work ListMap
+    pMap map = CreateMap();
 
-	pList lst = Create_List();
-	debug_print("0x%p: Create List \n" , lst);
+    AddToMap(map , 1 , 1);
+    AddToMap(map , 2 , 2);
 
 
-	DeleteMap(&map);
-	debug_print("0x%p: Delete Map\n" , map);
+    pMap_el map_el = (pMap_el)(map->data->tail->value);
+    printf ("elem value %d\n"
+                    "elem key %d\n" , map_el->value , map_el->key);
+
+    printf ("IsInMap %d\n" , IsInMap(map , 2));
+
+    DeleteMap(&map);
+
+
 
 	return 0;
 }
